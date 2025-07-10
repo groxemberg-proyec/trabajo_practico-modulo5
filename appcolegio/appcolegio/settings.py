@@ -37,10 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'personas',
     'cursos',
     'calificaciones',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ["rest_framework.permissions.IsAuthenticated"],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
