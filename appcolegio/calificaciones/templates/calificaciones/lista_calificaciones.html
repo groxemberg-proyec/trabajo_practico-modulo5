@@ -1,0 +1,21 @@
+<h2>Lista de Calificaciones</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Estudiante</th>
+      <th>Asignatura</th>
+      <th>Periodo</th>
+      <th>General</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cal in calificaciones %}
+      <tr>
+        <td>{{ cal.id_estudiante }}</td>
+        <td>{{ cal.asignatura }}</td>
+        <td>{{ cal.periodo }}</td>
+        <td>{{ cal.calificacion_general }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
