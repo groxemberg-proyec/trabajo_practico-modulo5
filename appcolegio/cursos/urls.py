@@ -1,4 +1,4 @@
-from   django.urls import include, path
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 from . import views
 
@@ -10,4 +10,5 @@ router.register(r'niveles', views.NivelViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('cursos-activos/', views.cursos_activos),
 ]
