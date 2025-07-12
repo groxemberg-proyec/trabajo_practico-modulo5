@@ -9,9 +9,10 @@ class CalificacionForm(forms.ModelForm):
             'asignatura',
             'id_estudiante',
             'calificacion_general',
-            'calificacion_ser',
-            'calificacion_saber',
-            'calificacion_hacer',
-            'calificacion_decidir',
+            'calificacion_actitudes',   
+            'calificacion_conocimiento',
+            'calificacion_practica',        
+            'calificacion_pensamiento_critico',
             'calificacion_autoevaluacion',
         ]
+

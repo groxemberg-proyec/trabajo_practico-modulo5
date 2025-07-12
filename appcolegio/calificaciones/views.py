@@ -1,21 +1,24 @@
+from rest_framework import viewsets
+from .models import Gestion, Periodo, Asignatura, Calificacion
+from .serializers import (
+    GestionSerializer,
+    PeriodoSerializer,
+    AsignaturaSerializer,
+    CalificacionSerializer,
+)
 
+class GestionViewSet(viewsets.ModelViewSet):
+    queryset = Gestion.objects.all()
+    serializer_class = GestionSerializer
 
-# Create your views here.
-from django.shortcuts import render, redirect
-from .models import Calificacion, Asignatura, Periodo
-from .forms import CalificacionForm
+class PeriodoViewSet(viewsets.ModelViewSet):
+    queryset = Periodo.objects.all()
+    serializer_class = PeriodoSerializer
 
-def registrar_calificacion(request):
-    if request.method == 'POST':
-        form = CalificacionForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('calificaciones:lista')
-    else:
-        form = CalificacionForm()
-    
-    return render(request, 'calificaciones/registrar_calificacion.html', {'form': form})
+class AsignaturaViewSet(viewsets.ModelViewSet):
+    queryset = Asignatura.objects.all()
+    serializer_class = AsignaturaSerializer
 
-def lista_calificaciones(request):
-    calificaciones = Calificacion.objects.select_related('asignatura', 'periodo').all()
-    return render(request, 'calificaciones/lista_calificaciones.html', {'calificaciones': calificaciones})
+class CalificacionViewSet(viewsets.ModelViewSet):
+    queryset = Calificacion.objects.all()
+    serializer_class = CalificacionSerializer

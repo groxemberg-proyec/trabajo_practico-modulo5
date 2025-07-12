@@ -1,5 +1,6 @@
 from django.db import models
 from personas.models import Profesor, Estudiante
+from .validators import validar_calificacion
 
 # GESTIÓN
 
@@ -11,6 +12,10 @@ class Gestion(models.Model):
 
     def __str__(self):
         return self.nombre_gestion
+    
+    class Meta:
+        verbose_name = "Gestión"
+        verbose_name_plural = "Gestiones"
 
 # PERÍODO
 
@@ -44,12 +49,12 @@ class Calificacion(models.Model):
     asignatura = models.ForeignKey(Asignatura, on_delete=models.CASCADE)
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
 
-    calificacion_general = models.PositiveSmallIntegerField(null=True, blank=True)
-    calificacion_ser = models.PositiveSmallIntegerField(null=True, blank=True)
-    calificacion_saber = models.PositiveSmallIntegerField(null=True, blank=True)
-    calificacion_hacer = models.PositiveSmallIntegerField(null=True, blank=True)
-    calificacion_decidir = models.PositiveSmallIntegerField(null=True, blank=True)
-    calificacion_autoevaluacion = models.PositiveSmallIntegerField(null=True, blank=True)
+    calificacion_general = models.PositiveSmallIntegerField(null=True, blank=True, validators=[validar_calificacion])
+    calificacion_actitudes = models.PositiveSmallIntegerField(null=True, blank=True, validators=[validar_calificacion])          # antes: calificacion_ser
+    calificacion_conocimiento = models.PositiveSmallIntegerField(null=True, blank=True, validators=[validar_calificacion])       # antes: calificacion_saber
+    calificacion_practica = models.PositiveSmallIntegerField(null=True, blank=True, validators=[validar_calificacion])           # antes: calificacion_hacer
+    calificacion_pensamiento_critico = models.PositiveSmallIntegerField(null=True, blank=True, validators=[validar_calificacion])# antes: calificacion_decidir
+    calificacion_autoevaluacion = models.PositiveSmallIntegerField(null=True, blank=True, validators=[validar_calificacion])
 
     estado = models.BooleanField(default=True)
     fecha_registro = models.DateTimeField(auto_now_add=True)
@@ -57,3 +62,7 @@ class Calificacion(models.Model):
 
     def __str__(self):
         return f"Estudiante {self.estudiante} - {self.asignatura.nombre_asignatura} - {self.periodo.nombre_periodo}"
+
+    class Meta:
+        verbose_name = "Calificación"
+        verbose_name_plural = "Calificaciones"
