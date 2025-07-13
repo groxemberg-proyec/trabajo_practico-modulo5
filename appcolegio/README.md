@@ -1,8 +1,5 @@
 # PROYECTO DE GESTIÓN ESCOLAR
 
-## Para las versiones de dependecias 
-### Ver `requirements.txt` para dependencias
-
 ## Instalación
 
 1. Clonar el repositorio:
@@ -27,12 +24,17 @@
     ```bash
     python manage.py migrate
 
-5. Crear superusuario:
+5. Cargá el archivo de backup:
+
+    '''bash
+    python manage.py loaddata dump_appcolegio.json
+
+6. Crear superusuario:
     
     ```bash
     python manage.py createsuperuser
 
-6. Correr servidor:
+7. Correr servidor:
 
     ```bash
     python manage.py runserver
