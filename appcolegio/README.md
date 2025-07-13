@@ -26,7 +26,7 @@
 
 5. Cargá el archivo de backup:
 
-    '''bash
+    ```bash
     python manage.py loaddata dump_appcolegio.json
 
 6. Crear superusuario:
