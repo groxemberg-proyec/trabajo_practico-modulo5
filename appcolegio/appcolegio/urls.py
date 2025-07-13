@@ -38,11 +38,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('personas/', include('personas.urls')),
     path('cursos/', include('cursos.urls')),
+    path('calificaciones/', include('calificaciones.urls')),
 
     #rutas por defecto de swagger
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
-    path('calificaciones/', include('calificaciones.urls')),
+   
 ]

@@ -18,8 +18,8 @@ class Colegio(models.Model):
 # PERSONA
 
 class tipoPerfil(models.TextChoices):
-    SOCIO = 'ESTUDIANTES', 'Estudiantes'
-    DOCENTE = 'DOCENTE', 'Docente'
+    SOCIO = 'Estudiante', 'Estudiante'
+    DOCENTE = 'Profesor', 'Profesor'
 
 class Persona(models.Model):
     colegio = models.ForeignKey(Colegio, on_delete=models.CASCADE, related_name='personas')

@@ -22,20 +22,19 @@ class PersonaAdmin(admin.ModelAdmin):
     ordering = ('nombres',)
 
 
-
 class ProfesorAdmin(admin.ModelAdmin):
     list_display = (nombre_persona, apellido_persona, 'estado')
     search_fields = ('persona__nombres', 'persona__apellido_paterno', 'persona__apellido_materno')
     list_filter = ('estado',)
     ordering = ('persona__nombres',)
 
-
-
+   
 class EstudianteAdmin(admin.ModelAdmin):
     list_display = (nombre_persona, apellido_persona, 'curso', 'salud_alergias', 'salud_grupo_sanguineo')
     search_fields = ('persona__nombres', 'persona__apellido_paterno', 'persona__apellido_materno')
     list_filter = ('curso', 'salud_grupo_sanguineo')
     ordering = ('persona__nombres',)
+
 
 admin.site.register(Colegio, ColegioAdmin)
 admin.site.register(Persona, PersonaAdmin)
